@@ -1,0 +1,10 @@
+[tools]
+1password = "latest"
+"aqua:dandavison/delta" = "latest"
+"aqua:neovim/neovim" = "latest"
+"aqua:starship/starship" = "latest"
+fd = "latest"
+github-cli = "latest"
+node = "latest"
+ripgrep = "latest"
+rust = "latest"

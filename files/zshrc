@@ -1,0 +1,7 @@
+# Env vars
+export STARSHIP_CONFIG=~/.config/starship/config.toml
+
+# Mise
+eval "$(~/.local/bin/mise activate zsh)"
+# Starship
+eval "$(starship init zsh)"
