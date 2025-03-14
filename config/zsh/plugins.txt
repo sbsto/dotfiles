@@ -1,0 +1,4 @@
+mattmc3/zfunctions
+zsh-users/zsh-history-substring-search
+MichaelAquilina/zsh-you-should-use
+wfxr/forgit
