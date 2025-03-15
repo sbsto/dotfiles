@@ -1,0 +1,2 @@
+# Link .zshrc to home directory
+$dir/.zshrc:$HOME/.zshrc

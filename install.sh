@@ -1,42 +1,63 @@
 #!/bin/bash
 
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[0;33m'
+RED='\033[0;31m'
+NC='\033[0m'
+
 dotfiles_dir=~/dotfiles
 config_dir="$dotfiles_dir/config"
 files_dir="$dotfiles_dir/files"
 
 if ! command -v mise &> /dev/null; then
+    echo -e "${YELLOW}Installing mise...${NC}"
     curl https://mise.run | sh
 fi
 mise install
 
 if [[ ! -d "$dotfiles_dir" ]]; then
-    echo "Dotfiles directory not found at $dotfiles_dir"
+    echo -e "${RED}Dotfiles directory not found at $dotfiles_dir${NC}"
     exit 1
 fi
 
 mkdir -p ~/.config
 
 if [[ ! -d "$config_dir/zsh/antidote" ]]; then
-    echo "Installing antidote plugin manager..."
+    echo -e "${YELLOW}Installing antidote plugin manager...${NC}"
     mkdir -p "$config_dir/zsh"
     git clone --depth=1 https://github.com/mattmc3/antidote.git "$config_dir/zsh/antidote"
 fi
 
-if [[ -d "$files_dir" ]]; then
-    for file in "$files_dir"/*; do
-        filename=$(basename "$file")
-        ln -sf "$file" ~/".$filename"
-    done
-fi
-
 if [[ -d "$config_dir" ]]; then
+    echo -e "${BLUE}Processing configuration directories...${NC}"
     for dir in "$config_dir"/*; do
         if [[ -d "$dir" ]]; then
             dirname=$(basename "$dir")
-            if [[ "$dirname" == "zsh" ]]; then
-                ln -sf "$dir/.zshrc" ~/.zshrc
+            echo -e "${BLUE}Setting up ${YELLOW}$dirname${BLUE} configuration...${NC}"
+            
+            if [[ -f "$dir/links" ]]; then
+                echo -e "  ${GREEN}Found links configuration, using custom linking...${NC}"
+                while IFS= read -r line || [[ -n "$line" ]]; do
+                    if [[ -z "$line" || "$line" =~ ^# ]]; then
+                        continue
+                    fi
+                    
+                    source_file=$(echo "$line" | cut -d: -f1)
+                    target_file=$(echo "$line" | cut -d: -f2)
+                    
+                    source_file=$(eval echo "$source_file")
+                    target_file=$(eval echo "$target_file")
+                    
+                    parent_dir=$(dirname "$target_file")
+                    mkdir -p "$parent_dir"
+                    
+                    echo -e "  ${GREEN}Linking ${YELLOW}$source_file${GREEN} to ${YELLOW}$target_file${NC}"
+                    ln -sf "$source_file" "$target_file"
+                done < "$dir/links"
             else
                 if [[ ! -L ~/.config/"$dirname" ]]; then
+                    echo -e "  ${GREEN}Using default link: ${YELLOW}$dir${GREEN} → ${YELLOW}~/.config/$dirname${NC}"
                     ln -sf "$dir" ~/.config/"$dirname"
                 fi
             fi
@@ -44,4 +65,4 @@ if [[ -d "$config_dir" ]]; then
     done
 fi
 
-echo "Dotfiles installation successful :)"
+echo -e "${GREEN}Dotfiles installation successful!${NC}"
