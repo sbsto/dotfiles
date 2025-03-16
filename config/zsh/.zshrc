@@ -1,6 +1,7 @@
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-
 export STARSHIP_CONFIG=~/.config/starship/config.toml
+export EDITOR=nvim
+export VISUAL=nvim
 
 plugins_file="${ZDOTDIR:-$HOME}/.config/zsh/plugins.txt"
 static_file="${ZDOTDIR:-$HOME}/.config/zsh/plugins.zsh"
