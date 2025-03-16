@@ -1,3 +1,5 @@
+export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
+
 export STARSHIP_CONFIG=~/.config/starship/config.toml
 
 plugins_file="${ZDOTDIR:-$HOME}/.config/zsh/plugins.txt"
@@ -21,5 +23,5 @@ for config_file in "${ZDOTDIR:-$HOME}/.config/zsh/"*.zsh; do
 done
 
 eval "$(~/.local/bin/mise activate zsh)"
-
+eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"

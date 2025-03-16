@@ -8,7 +8,37 @@ NC='\033[0m'
 
 dotfiles_dir=~/dotfiles
 config_dir="$dotfiles_dir/config"
-files_dir="$dotfiles_dir/files"
+
+if ! command -v brew &> /dev/null; then
+    echo -e "${YELLOW}Installing Homebrew...${NC}"
+    
+    if [[ "$(uname)" == "Darwin" ]]; then
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+        if [[ "$(uname -m)" == "arm64" ]]; then
+            echo -e "${BLUE}Setting up Homebrew for Apple Silicon...${NC}"
+            eval "$(/opt/homebrew/bin/brew shellenv)"
+        fi
+    else
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+        
+        test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+        test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+    fi
+    
+    echo -e "${GREEN}Homebrew installed successfully!${NC}"
+fi
+
+
+if command -v brew &> /dev/null; then
+    if [[ -f "$config_dir/brew/Brewfile" ]]; then
+        echo -e "${YELLOW}Installing packages from Brewfile...${NC}"
+        brew bundle --file="$config_dir/brew/Brewfile"
+        echo -e "${GREEN}Brewfile packages installed successfully!${NC}"
+    else
+        echo -e "${BLUE}No Brewfile found at $config_dir/brew/Brewfile${NC}"
+    fi
+fi
 
 if ! command -v mise &> /dev/null; then
     echo -e "${YELLOW}Installing mise...${NC}"
