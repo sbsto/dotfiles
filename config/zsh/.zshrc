@@ -3,12 +3,12 @@ export STARSHIP_CONFIG=~/.config/starship/config.toml
 export EDITOR=nvim
 export VISUAL=nvim
 
-plugins_file="${ZDOTDIR:-$HOME}/.config/zsh/plugins.txt"
-static_file="${ZDOTDIR:-$HOME}/.config/zsh/plugins.zsh"
+plugins_file="${ZDOTDIR:-$HOME}/dotfiles/config/zsh/plugins.txt"
+static_file="${ZDOTDIR:-$HOME}/dotfiles/config/zsh/plugins.zsh"
 
 [[ -f "$plugins_file" ]] || touch "$plugins_file"
 
-fpath=(${ZDOTDIR:-$HOME}/.config/zsh/antidote/functions $fpath)
+fpath=(${ZDOTDIR:-$HOME}/dotfiles/config/zsh/antidote/functions $fpath)
 autoload -Uz antidote
 
 if [[ ! "$static_file" -nt "$plugins_file" ]]; then
@@ -17,7 +17,7 @@ fi
 
 source "$static_file"
 
-for config_file in "${ZDOTDIR:-$HOME}/.config/zsh/"*.zsh; do
+for config_file in "${ZDOTDIR:-$HOME}/dotfiles/config/zsh/"*.zsh; do
   if [[ "$config_file" != "$plugins_file" && "$config_file" != "$static_file" ]]; then
     source "$config_file"
   fi

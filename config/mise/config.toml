@@ -10,8 +10,4 @@ node = "latest"
 "npm:@anthropic-ai/claude-code" = "latest"
 ripgrep = "latest"
 rust = "latest"
-sops = "latest"
 starship = "latest"
-
-[env]
-_.file = ".config/mise/.env.json"
