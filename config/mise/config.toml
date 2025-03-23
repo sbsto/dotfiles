@@ -11,3 +11,7 @@ node = "latest"
 ripgrep = "latest"
 rust = "latest"
 starship = "latest"
+usage = "latest"
+
+[env]
+_.file = ".env.json"

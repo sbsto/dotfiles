@@ -1,11 +1,9 @@
 #!/bin/bash
-
 GREEN='\033[0;32m'
 BLUE='\033[0;34m'
 YELLOW='\033[0;33m'
 RED='\033[0;31m'
 NC='\033[0m'
-
 dotfiles_dir=~/dotfiles
 config_dir="$dotfiles_dir/config"
 
@@ -29,7 +27,6 @@ if ! command -v brew &> /dev/null; then
     echo -e "${GREEN}Homebrew installed successfully!${NC}"
 fi
 
-
 if command -v brew &> /dev/null; then
     if [[ -f "$config_dir/brew/Brewfile" ]]; then
         echo -e "${YELLOW}Installing packages from Brewfile...${NC}"
@@ -44,7 +41,26 @@ if ! command -v mise &> /dev/null; then
     echo -e "${YELLOW}Installing mise...${NC}"
     curl https://mise.run | sh
 fi
+
 mise install
+
+echo -e "${YELLOW}Retrieving secrets from 1Password...${NC}"
+SECRETS_DIR="$config_dir/mise"
+OP_ITEM_NAME="secrets"
+
+mkdir -p "$SECRETS_DIR"
+
+if command -v op &> /dev/null; then
+    if op document get "$OP_ITEM_NAME" --out-file "$SECRETS_DIR/.env.json" 2>/dev/null; then
+        echo -e "${GREEN}Successfully retrieved secrets from 1Password and saved to $SECRETS_DIR/.env.json${NC}"
+    else
+        echo -e "${YELLOW}Could not find '$OP_ITEM_NAME' document in 1Password. Creating empty secrets file.${NC}"
+        echo "{}" > "$SECRETS_DIR/.env.json"
+    fi
+else
+    echo -e "${YELLOW}1Password CLI (op) not found. Creating empty secrets file.${NC}"
+    echo "{}" > "$SECRETS_DIR/.env.json"
+fi
 
 if [[ ! -d "$dotfiles_dir" ]]; then
     echo -e "${RED}Dotfiles directory not found at $dotfiles_dir${NC}"
