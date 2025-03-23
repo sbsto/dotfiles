@@ -88,9 +88,9 @@ function update_1password {
   fi
   
   if op document get "$OP_ITEM_NAME" > /dev/null 2>&1; then
-    op document edit "$OP_ITEM_NAME" "$ENV_FILE"
+    op document edit "$OP_ITEM_NAME" "$ENV_FILE" > /dev/null
   else
-    op document create "$ENV_FILE" --title "$OP_ITEM_NAME"
+    op document create "$ENV_FILE" --title "$OP_ITEM_NAME" > /dev/null
   fi
   
   echo "🔒 Updated 1Password document '$OP_ITEM_NAME'"
