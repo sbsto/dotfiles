@@ -28,9 +28,9 @@ if ! command -v brew &> /dev/null; then
 fi
 
 if command -v brew &> /dev/null; then
-    if [[ -f "$config_dir/brew/Brewfile" ]]; then
+    if [[ -f "$config_dir/brewfile/Brewfile" ]]; then
         echo -e "${YELLOW}Installing packages from Brewfile...${NC}"
-        brew bundle --file="$config_dir/brew/Brewfile"
+        brew bundle --file="$config_dir/brewfile/Brewfile"
         echo -e "${GREEN}Brewfile packages installed successfully!${NC}"
     else
         echo -e "${BLUE}No Brewfile found at $config_dir/brew/Brewfile${NC}"
@@ -51,7 +51,7 @@ OP_ITEM_NAME="secrets"
 mkdir -p "$SECRETS_DIR"
 
 if command -v op &> /dev/null; then
-    if op document get "$OP_ITEM_NAME" --out-file "$SECRETS_DIR/.env.json" 2>/dev/null; then
+    if op document get "$OP_ITEM_NAME" --out-file "$SECRETS_DIR/.env.json" --force 2>/dev/null; then
         echo -e "${GREEN}Successfully retrieved secrets from 1Password and saved to $SECRETS_DIR/.env.json${NC}"
     else
         echo -e "${YELLOW}Could not find '$OP_ITEM_NAME' document in 1Password. Creating empty secrets file.${NC}"
