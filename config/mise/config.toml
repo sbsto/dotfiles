@@ -12,6 +12,7 @@ ripgrep = "latest"
 rust = "latest"
 starship = "latest"
 usage = "latest"
+bat = "latest"
 
 [env]
 _.file = ".config/mise/.env.json"

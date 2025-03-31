@@ -13,3 +13,6 @@ alias gp='git push'
 alias gpf='git push --force-with-lease'
 
 alias mr='mise run'
+alias ms='mise registry | rg'
+
+alias pnpx='pnpm dlx'
