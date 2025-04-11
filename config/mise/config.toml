@@ -7,12 +7,14 @@ fzf = "latest"
 github-cli = "latest"
 neovim = "latest"
 node = "latest"
-"npm:@anthropic-ai/claude-code" = "latest"
 ripgrep = "latest"
 rust = "latest"
 starship = "latest"
 usage = "latest"
 bat = "latest"
+
+# NPM
+"npm:@anthropic-ai/claude-code" = "latest"
 
 [env]
 _.file = ".config/mise/.env.json"
