@@ -1,7 +1,7 @@
 #!/usr/bin/env -S usage bash
 
-#USAGE arg "<command>" help="Command to run (add, remove, list, get)"
-#USAGE arg "[value]" help="Value: KEY:VALUE format for add command, or KEY for remove command"
+#USAGE arg "<command>" help="Command to run (add, del, list, get)"
+#USAGE arg "[value]" help="Value: KEY:VALUE format for add command, or KEY for del command"
 
 set -eo pipefail
 ENV_FILE="$HOME/.config/mise/.env.json"
@@ -49,7 +49,17 @@ function remove_secret {
     exit 1
   fi
   
+  if ! jq -e "has(\"$key\")" "$ENV_FILE" > /dev/null; then
+    echo "⚠️ Secret: $key not found in global file: $ENV_FILE"
+    return
+  fi
+  
   jq "del(.$key)" "$ENV_FILE" > "$ENV_FILE.tmp" && mv "$ENV_FILE.tmp" "$ENV_FILE"
+  
+  if command -v op &> /dev/null; then
+    echo "🔑 Removing secret: $key from 1Password"
+    op document delete "$OP_ITEM_NAME" "$key" > /dev/null 2>&1 || true
+  fi
   
   update_1password
   
@@ -105,7 +115,7 @@ case "$usage_command" in
     add_secret "$usage_value"
     ;;
     
-  "remove")
+  "del")
     if [ -z "$usage_value" ]; then
       echo "Error: No KEY provided"
       exit 1
