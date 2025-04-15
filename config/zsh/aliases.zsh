@@ -19,9 +19,11 @@ alias ms='mise registry | rg'
 
 alias n='npm'
 alias ni='npm install'
+alias nt='npm test'
 
 alias p='pnpm'
 alias pi='pnpm install'
+alias pt='pnpm test'
 alias pnpx='pnpm dlx'
 
 alias v='nvim'
