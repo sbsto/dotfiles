@@ -1,6 +1,8 @@
 alias ls='ls -GF --color=auto'
 alias ll='ls -lahF --color=auto'
 
+alias c='clear'
+
 alias zs='source ~/.zshrc'
 
 alias gaa='git add -A'
