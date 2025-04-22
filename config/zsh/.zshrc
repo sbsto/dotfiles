@@ -1,7 +1,8 @@
 export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
-export STARSHIP_CONFIG=~/.config/starship/config.toml
+export STARSHIP_CONFIG=$HOME/.config/starship/config.toml
 export EDITOR=nvim
 export VISUAL=nvim
+export SSH_AUTH_SOCK=$HOME/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
 
 plugins_file="${ZDOTDIR:-$HOME}/dotfiles/config/zsh/plugins.txt"
 static_file="${ZDOTDIR:-$HOME}/dotfiles/config/zsh/plugins.zsh"

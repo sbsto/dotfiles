@@ -1,2 +1,3 @@
 brownstone@hey.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICZZa/0RKX/o3oinjSucc8e/KhGxEq8FP7KKg52FqJ6t
 brownstone@hey.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDZ1SD+KwIEngXbkxVWF9ac+pFiKzqqk351I+vo0mbUD
+brownstone@hey.com ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBGT3rFHJ8bmohyVejglQFPgLUbd2LZT6PTvnm/xfaFna5VeEVjcZqg1LH4K2dEG8Dnmm9nGHZRrGC3pLZARHG5k= signer@secretive.HG2VY74FX7.local
