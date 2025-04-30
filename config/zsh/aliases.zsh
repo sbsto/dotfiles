@@ -34,4 +34,3 @@ alias px='pnpm dlx'
 alias pnpx='pnpm dlx'
 
 alias v='nvim'
-
