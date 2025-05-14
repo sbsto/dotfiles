@@ -19,3 +19,6 @@ bat = "latest"
 
 [env]
 _.file = ".config/mise/.env.json"
+
+[settings]
+idiomatic_version_file_enable_tools = ["ruby"]
