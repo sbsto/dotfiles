@@ -3,4 +3,4 @@ brew "libyaml"
 brew "watchman"
 
 cask "secretive"
-cask "bruno"
+cask "raycast"
