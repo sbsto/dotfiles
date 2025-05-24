@@ -11,6 +11,8 @@ static_file="${ZDOTDIR:-$HOME}/dotfiles/config/zsh/plugins.zsh"
 
 fpath=(${ZDOTDIR:-$HOME}/dotfiles/config/zsh/antidote/functions $fpath)
 autoload -Uz antidote
+autoload -Uz compinit && compinit
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 if [[ ! "$static_file" -nt "$plugins_file" ]]; then
   antidote bundle < "$plugins_file" >| "$static_file"
