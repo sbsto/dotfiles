@@ -1,6 +1,5 @@
 brew "libpq"
 brew "libyaml"
-brew "watchman"
 
 cask "secretive"
 cask "raycast"

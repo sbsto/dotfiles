@@ -1,1 +1,2 @@
 $dir/config:$HOME/.ssh/config
+$dir/config.local:$HOME/.ssh/config.local

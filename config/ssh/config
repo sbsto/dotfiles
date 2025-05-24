@@ -1,2 +1,4 @@
 Host *
 	IdentityAgent ~/Library/Containers/com.maxgoedjen.Secretive.SecretAgent/Data/socket.ssh
+
+Include config.local
