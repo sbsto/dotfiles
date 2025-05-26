@@ -3,3 +3,4 @@ brew "libyaml"
 
 cask "secretive"
 cask "raycast"
+cask "tailscale"
