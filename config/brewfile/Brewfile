@@ -1,5 +1,7 @@
 brew "libpq"
 brew "libyaml"
+brew "starship"
 
 cask "secretive"
 cask "raycast"
+cask "ghostty"
