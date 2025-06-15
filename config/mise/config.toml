@@ -13,6 +13,9 @@ go = "latest"
 starship = "latest"
 usage = "latest"
 bat = "latest"
+opam = "latest"
+ocaml = "latest"
+
 
 [env]
 _.file = ".config/mise/.env.json"
