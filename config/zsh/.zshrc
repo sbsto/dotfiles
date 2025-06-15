@@ -29,3 +29,4 @@ done
 eval "$(~/.local/bin/mise activate zsh)"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
+eval "$(opam env)"
