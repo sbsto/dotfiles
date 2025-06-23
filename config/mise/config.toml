@@ -16,7 +16,6 @@ bat = "latest"
 opam = "latest"
 ocaml = "latest"
 
-
 [env]
 _.file = ".config/mise/.env.json"
 
