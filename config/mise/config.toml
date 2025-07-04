@@ -16,8 +16,11 @@ bat = "latest"
 opam = "latest"
 ocaml = "latest"
 
+"ubi:sbsto/suggest" = "1.0.8"
+
 [env]
 _.file = ".config/mise/.env.json"
+PAGER = "less -S"
 
 [settings]
 idiomatic_version_file_enable_tools = ["ruby", "node"]
