@@ -6,21 +6,14 @@ fd = "latest"
 fzf = "latest"
 github-cli = "latest"
 neovim = "latest"
-node = "latest"
 ripgrep = "latest"
-rust = "latest"
-go = "latest"
 starship = "latest"
 usage = "latest"
 bat = "latest"
-opam = "latest"
-ocaml = "latest"
-
-"ubi:sbsto/suggest" = "1.0.8"
 
 [env]
 _.file = ".config/mise/.env.json"
 PAGER = "less -S"
 
-[settings]
-idiomatic_version_file_enable_tools = ["ruby", "node"]
+# [settings]
+# idiomatic_version_file_enable_tools = ["ruby", "node"]
