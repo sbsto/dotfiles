@@ -22,6 +22,7 @@ alias grm='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed "s@^re
 
 alias mr='mise run'
 alias ms='mise registry | rg'
+alias mi='mise install'
 
 alias n='npm'
 alias nr='npm run'
