@@ -2,6 +2,7 @@ alias ls='ls -GF --color=auto'
 alias ll='ls -lahF --color=auto'
 
 alias c='clear'
+alias x='exit'
 
 alias zs='source ~/.zshrc'
 
@@ -24,8 +25,7 @@ alias mr='mise run'
 alias ms='mise registry | rg'
 alias mi='mise install'
 
-alias n='npm'
-alias nr='npm run'
+alias n='npm' alias nr='npm run'
 alias ni='npm install'
 alias nt='npm test'
 alias nx='npm exec'
