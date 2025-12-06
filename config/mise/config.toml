@@ -10,6 +10,7 @@ ripgrep = "latest"
 starship = "latest"
 usage = "latest"
 bat = "latest"
+zoxide = "latest"
 
 [env]
 _.file = ".config/mise/.env.json"
